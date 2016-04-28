@@ -6,4 +6,13 @@
 
     <string name="action_settings">Settings</string>
     <string name="title_activity_rhythm_reference">RhythmReference</string>
+
+    <string name="rhythm_header">Rhythm</string>
+    <string name="notes_header">Notes</string>
+    <string name="rests_header">Rests</string>
+    <string name="whole_text">whole</string>
+    <string name="half_text">half</string>
+    <string name="quarter_text">quarter</string>
+    <string name="eighth_text">eighth</string>
+    <string name="sixteenth_text">sixteenth</string>
 </resources>
