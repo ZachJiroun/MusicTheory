@@ -2,8 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    tools:context="cmsc436.com.musictheory.RhythmFragment"
-    android:background="#d81818">
+    tools:context="cmsc436.com.musictheory.RhythmFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -12,9 +11,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/imageView2"
         android:contentDescription="Displays image referene for given rhythm"
-        android:src="@drawable/Whole_note_measure"
+        android:src="@drawable/whole_note_measure"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="150dp" />
+        android:layout_marginTop="0dp" />
 
 </FrameLayout>

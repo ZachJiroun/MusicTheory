@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 public class RhythmReference extends AppCompatActivity {
 
     ImageButton wholeNoteButton;
+    FragmentManager fragmentManager = getFragmentManager();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +28,7 @@ public class RhythmReference extends AppCompatActivity {
 
             public void onClick(View v) {
 
-                FragmentManager fragmentManager = getFragmentManager();
+
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                     RhythmFragment rhythmFragment = new RhythmFragment();
                     fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -36,6 +37,15 @@ public class RhythmReference extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(fragmentManager.getBackStackEntryCount() != 0) {
+            fragmentManager.popBackStack();
+        } else {
+            super.onBackPressed();
+        }
     }
 
 }
