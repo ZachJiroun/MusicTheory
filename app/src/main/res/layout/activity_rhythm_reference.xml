@@ -61,7 +61,7 @@
             android:text="@string/rests_header"/>
 
         <ImageButton
-            android:id="@+id/button1"
+            android:id="@+id/whole_note_button"
             android:layout_gravity="center"
             android:background="@drawable/ic_quarter_note"/>
 
@@ -145,6 +145,13 @@
             android:text="Button10" />
 
     </GridLayout>
+
+    <RelativeLayout
+        android:id="@+id/rhythm_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        />
 
     <include layout="@layout/content_rhythm_reference"/>
 
