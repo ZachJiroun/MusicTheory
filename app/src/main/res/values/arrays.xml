@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="lessons">
+        <item>The Staff, Clefs, and Ledger Lines</item>
+        <item>Note Duration</item>
+        <item>Measures and Time Signature</item>
+        <item>Rest Duration</item>
+        <item>Dots and Ties</item>
+        <item>Steps and Accidentals</item>
+        <item>Simple and Compound Meter</item>
+        <item>Odd Meter</item>
+        <item>The Major Scale</item>
+        <item>The Minor Scales</item>
+        <item>Scale Degrees</item>
+        <item>Key Signatures</item>
+        <item>Key Signature Calculation</item>
+    </string-array>
+
+    <string-array name="urls">
+        <item>http://www.musictheory.net/lessons/10</item>
+        <item>http://www.musictheory.net/lessons/11</item>
+        <item>http://www.musictheory.net/lessons/12</item>
+        <item>http://www.musictheory.net/lessons/13</item>
+        <item>http://www.musictheory.net/lessons/14</item>
+        <item>http://www.musictheory.net/lessons/20</item>
+        <item>http://www.musictheory.net/lessons/15</item>
+        <item>http://www.musictheory.net/lessons/16</item>
+        <item>http://www.musictheory.net/lessons/21</item>
+        <item>http://www.musictheory.net/lessons/22</item>
+        <item>http://www.musictheory.net/lessons/23</item>
+        <item>http://www.musictheory.net/lessons/24</item>
+        <item>http://www.musictheory.net/lessons/25</item>
+    </string-array>
+</resources>
