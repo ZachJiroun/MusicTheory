@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,6 +26,7 @@ public class LessonListFragment extends Fragment {
     private String[] mUrls;
 
     private OnLessonSelected mListener;
+    private AppCompatActivity mActivity;
 
     public static LessonListFragment newInstance() { return new LessonListFragment(); }
 
@@ -37,6 +39,7 @@ public class LessonListFragment extends Fragment {
 
         if (context instanceof OnLessonSelected) {
             mListener = (OnLessonSelected) context;
+            mActivity = (AppCompatActivity) context;
         } else {
             throw new ClassCastException(context.toString() + " must implement OnLessonSelected.");
         }
@@ -45,6 +48,13 @@ public class LessonListFragment extends Fragment {
         final Resources resources = context.getResources();
         mLessons = resources.getStringArray(R.array.lessons);
         mUrls = resources.getStringArray(R.array.urls);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((LessonsActivity) mActivity).setDrawerIndicatorEnabled(true);
+        ((LessonsActivity) mActivity).setActionBarTitle(getString(R.string.lessons_title));
     }
 
     @Nullable
