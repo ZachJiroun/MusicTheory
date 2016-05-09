@@ -46,6 +46,12 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
             ab.setDisplayHomeAsUpEnabled(true);
         }
         setActionBarTitle(getString(R.string.lessons_title));
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
         mDrawerToggle = new ActionBarDrawerToggle(LessonsActivity.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
@@ -122,5 +128,25 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
                 .replace(R.id.contentFrame, detailsFragment, "lessonDetails")
                 .addToBackStack(lessonName)
                 .commit();
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.lessons_menu_item:
+                                break;
+                            default:
+                                break;
+                        }
+                        // Close the navigation drawer when an item is selected.
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+
+                });
     }
 }
