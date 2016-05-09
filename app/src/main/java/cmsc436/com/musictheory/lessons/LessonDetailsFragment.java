@@ -1,20 +1,17 @@
 package cmsc436.com.musictheory.lessons;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewFragment;
-import android.widget.Toast;
 
 /**
  * Created by zach on 5/7/16.
@@ -69,6 +66,7 @@ public class LessonDetailsFragment extends WebViewFragment {
         webView.loadUrl(args.getString(ARGUMENT_URL));
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
+        webView.getSettings().setDomStorageEnabled(true);
         webSettings.setLoadsImagesAutomatically(true);
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
         // Enable responsive layout
