@@ -1,19 +1,26 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context="cmsc436.com.musictheory.RhythmFragment">
+    android:layout_height="120dp"
+    tools:context="cmsc436.com.musictheory.RhythmFragment"
+    android:background="#c6e2df">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:contentDescription="Displays image referene for given rhythm"
-        android:src="@drawable/whole_note_measure"
+        android:id="@+id/measure_image"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="0dp" />
+        android:layout_marginTop="0dp"
+        android:src="@drawable/blank_measure"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/play_stop_button"
+        android:layout_gravity="center_horizontal|bottom"
+        android:src="@drawable/ic_play_button"/>
 
 </FrameLayout>

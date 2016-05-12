@@ -13,4 +13,6 @@
     tools:showIn="@layout/activity_rhythm_reference"
     tools:context="cmsc436.com.musictheory.RhythmReference">
 
+
+
 </RelativeLayout>
