@@ -1,5 +1,10 @@
 package cmsc436.com.musictheory;
 
+<<<<<<< HEAD
+=======
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+>>>>>>> austin_v2
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -9,6 +14,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 
@@ -17,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
 
     // presenter
+
+    Button test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        //
     }
 
     @Override
@@ -84,4 +92,9 @@ public class MainActivity extends AppCompatActivity {
 
                 });
     }
+
+    /*public void openRhythmActivity(View v) {
+
+        Intent intent = new Intent(this, RhythmReference.class);
+    }*/
 }

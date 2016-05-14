@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="cmsc436.com.musictheory.RhythmReference">
+    
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/GridLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="190dp"
+        android:layout_gravity="center"
+        android:columnCount="3"
+        android:rowCount="10"
+        android:orientation="horizontal"
+        tools:context=".GridXMLActivity" >
+        <TextView
+            android:id="@+id/notes_textview"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="@string/notes_header"/>
+
+        <Space/>
+
+        <TextView
+            android:id="@+id/rest_textview"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="@string/rests_header"/>
+
+        <ImageButton
+            android:id="@+id/whole_note_button"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_whole_note"/>
+
+        <TextView
+            android:id="@+id/whole_textview"
+            android:layout_gravity="center"
+            android:padding="@dimen/rhythm_grid_padding"
+            android:textColor="#000000"
+            android:text="@string/whole_text"/>
+
+        <ImageButton
+            android:id="@+id/whole_rest_button"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_whole_rest"/>
+
+        <ImageButton
+            android:id="@+id/half_note_button"
+            android:layout_height="55dp"
+            android:layout_width="55dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_half_note"/>
+
+        <TextView
+            android:id="@+id/half_textview"
+            android:layout_gravity="center"
+            android:padding="@dimen/rhythm_grid_padding"
+            android:textColor="#000000"
+            android:text="@string/half_text"/>
+
+        <ImageButton
+            android:id="@+id/half_rest_button"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_half_rest" />
+
+        <ImageButton
+            android:id="@+id/quarter_note_button"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_quarter_note" />
+
+        <TextView
+            android:id="@+id/quarter_textview"
+            android:layout_gravity="center"
+            android:padding="@dimen/rhythm_grid_padding"
+            android:textColor="#000000"
+            android:text="@string/quarter_text"/>
+
+        <ImageButton
+            android:id="@+id/quarter_rest_button"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_quarter_rest"  />
+
+        <ImageButton
+            android:id="@+id/eighth_note_button"
+            android:layout_height="50dp"
+            android:layout_width="50dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_eighth_note"/>
+
+        <TextView
+            android:id="@+id/eighth_textview"
+            android:layout_gravity="center"
+            android:padding="@dimen/rhythm_grid_padding"
+            android:textColor="#000000"
+            android:text="@string/eighth_text"/>
+
+        <ImageButton
+            android:id="@+id/eighth_rest_button"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_eighth_rest" />
+
+        <ImageButton
+            android:id="@+id/sixteenth_note_button"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_marginRight="12dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_sixteenth_note" />
+
+        <TextView
+            android:id="@+id/sixteenth_textview"
+            android:layout_gravity="center"
+            android:padding="@dimen/rhythm_grid_padding"
+            android:textColor="#000000"
+            android:text="@string/sixteenth_text"/>
+
+        <ImageButton
+            android:id="@+id/sixteenth_rest_button"
+            android:layout_height="60dp"
+            android:layout_width="60dp"
+            android:layout_gravity="center"
+            android:background="@drawable/ic_sixteenth_rest" />
+
+    </GridLayout>
+
+    <RelativeLayout
+        android:id="@+id/rhythm_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_marginTop="71dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+
+    <include layout="@layout/content_rhythm_reference"/>
+
+</android.support.design.widget.CoordinatorLayout>

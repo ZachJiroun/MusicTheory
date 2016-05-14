@@ -19,7 +19,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".lessons.LessonsActivity" >
+        <activity android:name=".lessons.LessonsActivity" />
+        <activity
+            android:name=".RhythmReference"
+            android:label="@string/title_activity_rhythm_reference" >
         </activity>
     </application>
 
