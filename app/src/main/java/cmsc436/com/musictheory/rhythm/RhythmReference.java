@@ -1,15 +1,22 @@
-package cmsc436.com.musictheory;
+package cmsc436.com.musictheory.rhythm;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
+
+import cmsc436.com.musictheory.R;
+import cmsc436.com.musictheory.lessons.LessonsActivity;
 
 public class RhythmReference extends AppCompatActivity {
 
@@ -23,19 +30,66 @@ public class RhythmReference extends AppCompatActivity {
     ImageButton eighthRestButton;
     ImageButton sixteenthNoteButton;
     ImageButton sixteenthRestButton;
-    FragmentManager fragmentManager = getFragmentManager();
+
+    private DrawerLayout mDrawerLayout;
+    private Toolbar mToolbar;
+    private ActionBarDrawerToggle mDrawerToggle;
+    FragmentManager mFragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rhythm_reference);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         Bundle bundle = new Bundle();
         bundle.putString("button_value", "blank");
 
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        // Set up the navigation drawer.
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // Set up the toolbar.
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setDisplayShowTitleEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
+        mDrawerToggle = new ActionBarDrawerToggle(RhythmReference.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFragmentManager.popBackStack();
+            }
+        });
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
+        // Set up fragment
+        mFragmentManager = getFragmentManager();
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+
+        FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
         RhythmFragment rhythmFragment = new RhythmFragment();
         rhythmFragment.setArguments(bundle);
         fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -50,7 +104,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "whole");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                     RhythmFragment rhythmFragment = new RhythmFragment();
                     rhythmFragment.setArguments(bundle);
                     fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -68,7 +122,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "whole");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -86,7 +140,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "half");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -104,7 +158,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "half");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -122,7 +176,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "quarter");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -140,7 +194,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "quarter");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -158,7 +212,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "eighth");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -176,7 +230,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "eighth");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -194,7 +248,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "sixteenth");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -212,7 +266,7 @@ public class RhythmReference extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putString("button_value", "sixteenth");
 
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                FragmentTransaction fragmentTransaction = mFragmentManager.beginTransaction();
                 RhythmFragment rhythmFragment = new RhythmFragment();
                 rhythmFragment.setArguments(bundle);
                 fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
@@ -227,11 +281,59 @@ public class RhythmReference extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(fragmentManager.getBackStackEntryCount() != 0) {
-            fragmentManager.popBackStack();
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawers();
+            return;
+        }
+        if(mFragmentManager.getBackStackEntryCount() != 0) {
+            mFragmentManager.popBackStack();
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mFragmentManager.getBackStackEntryCount() > 0) {
+                    mFragmentManager.popBackStack();
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void setDrawerIndicatorEnabled(boolean value) {
+        if (mDrawerToggle != null) {
+            mDrawerToggle.setDrawerIndicatorEnabled(value);
+        }
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.lessons_menu_item:
+                                Intent li = new Intent(RhythmReference.this, LessonsActivity.class);
+                                li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(li);
+                                break;
+                            default:
+                                break;
+                        }
+                        // Close the navigation drawer when an item is selected.
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+
+                });
     }
 
 }

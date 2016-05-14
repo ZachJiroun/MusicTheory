@@ -1,10 +1,7 @@
 package cmsc436.com.musictheory;
 
-<<<<<<< HEAD
-=======
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
->>>>>>> austin_v2
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -18,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import cmsc436.com.musictheory.lessons.LessonsActivity;
+import cmsc436.com.musictheory.rhythm.RhythmReference;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -76,11 +74,16 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.lessons_menu_item:
-                                Intent intent = new Intent(MainActivity.this, LessonsActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                Intent li = new Intent(MainActivity.this, LessonsActivity.class);
+                                li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(intent);
+                                startActivity(li);
                                 break;
+                            case R.id.rhythm_menu_item:
+                                Intent ri = new Intent(MainActivity.this, RhythmReference.class);
+                                ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ri);
                             default:
                                 break;
                         }

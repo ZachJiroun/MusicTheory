@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".lessons.LessonsActivity" />
         <activity
-            android:name=".RhythmReference"
+            android:name=".rhythm.RhythmReference"
             android:label="@string/title_activity_rhythm_reference" >
         </activity>
     </application>

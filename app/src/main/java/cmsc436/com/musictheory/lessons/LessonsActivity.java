@@ -1,6 +1,7 @@
 package cmsc436.com.musictheory.lessons;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import cmsc436.com.musictheory.R;
+import cmsc436.com.musictheory.rhythm.RhythmReference;
 
 public class LessonsActivity extends AppCompatActivity implements LessonListFragment.OnLessonSelected {
 
@@ -132,6 +134,11 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
                         switch (menuItem.getItemId()) {
                             case R.id.lessons_menu_item:
                                 break;
+                            case R.id.rhythm_menu_item:
+                                Intent ri = new Intent(LessonsActivity.this, RhythmReference.class);
+                                ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ri);
                             default:
                                 break;
                         }

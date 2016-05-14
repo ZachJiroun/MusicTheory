@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="120dp"
-    tools:context="cmsc436.com.musictheory.RhythmFragment"
+    tools:context=".rhythm.RhythmFragment"
     android:background="#c6e2df">
 
     <!-- TODO: Update blank fragment layout -->
