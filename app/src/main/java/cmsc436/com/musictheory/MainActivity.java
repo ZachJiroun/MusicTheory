@@ -304,9 +304,7 @@ public class MainActivity extends AppCompatActivity
                     mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                     mp.prepare();
                     mp.start();
-                } catch (IllegalStateException e) {
-                    e.printStackTrace();
-                } catch (IOException e){
+                } catch (IllegalStateException | IOException e) {
                     e.printStackTrace();
                 }
 
@@ -332,9 +330,7 @@ public class MainActivity extends AppCompatActivity
                         mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                         mp.prepare();
                         mp.start();
-                    } catch (IllegalStateException e) {
-                        e.printStackTrace();
-                    } catch (IOException e){
+                    } catch (IllegalStateException | IOException e) {
                         e.printStackTrace();
                     }
                 }
