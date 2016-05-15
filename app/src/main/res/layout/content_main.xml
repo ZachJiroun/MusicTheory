@@ -41,7 +41,7 @@
 
     <RelativeLayout
         android:layout_width="144dp"
-        android:layout_height="478dp"
+        android:layout_height="578dp"
         android:id="@+id/fragment_container"
         android:layout_gravity="center"
         android:layout_alignParentTop="true"

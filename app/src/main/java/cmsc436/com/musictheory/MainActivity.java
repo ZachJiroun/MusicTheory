@@ -185,7 +185,8 @@ public class MainActivity extends AppCompatActivity
         st.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                int rand = generateInterval();
+                //int rand = generateInterval();
+                int rand = 14;
 
                 HashMap<Integer, String> map = generateMap();
                 FragmentManager fragmentManager = getSupportFragmentManager();
@@ -233,20 +234,31 @@ public class MainActivity extends AppCompatActivity
                         note.setArguments(args);
                         fragmentTransaction.add(R.id.fragment_container, note, "NOTE");
                         if(rand <= 4 || rand == 25 || rand == 26){
-                            FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
+                            Bundle first_ledge = new Bundle();
                             LedgerFragment ledge = new LedgerFragment();
+                            FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
+                            int ledger_height = getResources().getInteger(R.integer.bottom_ledger);
+                            first_ledge.putInt("height", ledger_height);
+                            ledge.setArguments(first_ledge);
+                            Log.d("Height in Px", Integer.toString(height));
                             Log.d("Height", Integer.toString(heightMap.get(key)));
-                            ledge.setArguments(args);
-                            ledgeFrag.add(R.id.fragment_container, ledge, "LEDGE");
                             Log.d("Ledger", "Print Ledger Here~~~~~~~~~~~~~~~~~");
+                            Log.d("Ledger Height 1st check", Integer.toString(ledger_height));
+
+                            ledgeFrag.add(R.id.fragment_container, ledge, "LEDGE");
+
                             ledgeFrag.commit();
 
                             //adding second ledger line
                             if(rand == 0 || rand == 1){
+                                Bundle ledge_args = new Bundle();
+//                                ledge_args.putInt("height", height + 10);
                                 FragmentTransaction sl = fragmentManager.beginTransaction();
                                 LedgerFragment second_ledge = new LedgerFragment();
-                                args.putInt("height", height - 30);
-                                second_ledge.setArguments(args);
+                                ledge_args.putInt("height", ledger_height + 80);
+                                Log.d("2nd Ledger Height", Integer.toString(ledger_height));
+                                //Log.d("second line height", Integer.toString(height - 90));
+                                second_ledge.setArguments(ledge_args);
                                 sl.add(R.id.fragment_container, second_ledge, "LEDGE_TWO");
                                 sl.commit();
                             }

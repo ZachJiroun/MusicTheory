@@ -1,6 +1,7 @@
 package cmsc436.com.musictheory;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ public class LedgerFragment extends android.support.v4.app.Fragment {
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.ledger_fragment, container, false);
         RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(432, bundle.getInt("height"));
+        //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(432, getResources().getInteger(R.integer.bottom_ledger));
         view.setLayoutParams(layoutParams);
 
         return view;

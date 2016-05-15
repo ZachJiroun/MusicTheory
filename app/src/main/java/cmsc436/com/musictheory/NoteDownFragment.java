@@ -21,7 +21,7 @@ public class NoteDownFragment extends android.support.v4.app.Fragment {
 
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.note_down_fragment, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(432, bundle.getInt("height"));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(432, bundle.getInt("height") + 182);
         view.setLayoutParams(layoutParams);
 
         return view;
