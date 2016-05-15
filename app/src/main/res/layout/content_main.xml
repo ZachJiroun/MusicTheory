@@ -35,9 +35,9 @@
         android:layout_height="wrap_content"
         android:text="@string/button_name"
         android:id="@+id/st"
-        android:layout_marginBottom="198dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="53dp"
+        android:layout_below="@+id/imageView3"
+        android:layout_toStartOf="@+id/noteTitle" />
 
     <RelativeLayout
         android:layout_width="144dp"
@@ -46,7 +46,16 @@
         android:layout_gravity="center"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true">
+
     </RelativeLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playback"
+        android:id="@+id/pb"
+        android:layout_alignTop="@+id/st"
+        android:layout_toEndOf="@+id/noteTitle" />
 
 
 </RelativeLayout>

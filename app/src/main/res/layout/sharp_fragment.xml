@@ -2,14 +2,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="cmsc436.com.musictheory.noteFragment">
+    tools:context=".NoteUpFragment">
 
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/upHead"
+        android:id="@+id/sharp"
         android:layout_gravity="center"
-        android:src="@drawable/staff_down" />
+        android:src="@drawable/sharp" />
+
 
 </FrameLayout>
