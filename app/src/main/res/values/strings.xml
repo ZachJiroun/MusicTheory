@@ -3,9 +3,23 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-
+    <string name="correct">correct.wav</string>
     <string name="action_settings">Settings</string>
     <string name="title">Notes</string>
     <string name="button_name">Start</string>
     <string name="playback">Playback</string>
+    <string-array name="note_array">
+        <item>A</item>
+        <item>Bb</item>
+        <item>B</item>
+        <item>C</item>
+        <item>C#</item>
+        <item>D</item>
+        <item>D#</item>
+        <item>E</item>
+        <item>F</item>
+        <item>F#</item>
+        <item>G</item>
+        <item>G#</item>
+    </string-array>
 </resources>

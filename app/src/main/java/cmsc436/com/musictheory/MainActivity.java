@@ -18,7 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-
+import android.widget.EditText;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
@@ -27,8 +27,11 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     HashMap<String, Integer> heightMap = new HashMap<>();
-    Button st, playback;
+    Button st, playback, submit;
     String filename = "";
+    String check_answer = "";
+    EditText sEdit;
+
 
 
     public String mp3FileName (String string) {
@@ -145,6 +148,46 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         }
+
+
+        letter = 'C';
+        sign = "";
+        register = 5;
+        height = 213;
+
+        //loop over second half again to adjust height correctly for treble staff
+        for(int count = 24; count < 50; count++){
+            String name = String.valueOf(letter) + register + sign;
+            heightMap.put(name, height);
+            if(letter == 'B'){
+                if(sign.equals("")){
+                    register++;
+                    letter++;
+                    height = height - 13;
+                }else {
+                    sign = "";
+                }
+            } else if (letter == 'G' && sign.equals("#")){
+                letter = 'A';
+                sign = "";
+                height = height - 13;
+            } else if (letter == 'E') {
+                letter = 'F';
+                height = height - 13;
+            } else if (letter == 'A'){
+                letter = 'B';
+                sign = "b";
+                height = height - 13;
+            } else {
+                if (sign == ""){
+                    sign = "#";
+                } else {
+                    sign = "";
+                    letter++;
+                    height = height - 13;
+                }
+            }
+        }
         return map;
     }
 
@@ -159,7 +202,6 @@ public class MainActivity extends AppCompatActivity
         DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         return dp * (metrics.densityDpi/160f);
     }
-
 
 
     @Override
@@ -181,12 +223,14 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+
         st = (Button) findViewById(R.id.st);
         st.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
-                //int rand = generateInterval();
-                int rand = 14;
+
+                //int rand = 48;
+                int rand = generateInterval();
 
                 HashMap<Integer, String> map = generateMap();
                 FragmentManager fragmentManager = getSupportFragmentManager();
@@ -219,6 +263,7 @@ public class MainActivity extends AppCompatActivity
 
                 Bundle args = new Bundle();
                 String key = map.get(rand);
+                check_answer = key.replaceAll("[0-9]","");
                 int height = (int) dpToPixel(heightMap.get(key));
                 args.putInt("height", height);
 
@@ -228,36 +273,29 @@ public class MainActivity extends AppCompatActivity
                 }
                 try{
                     //note stem is up
-                    if((25 <= rand && rand <= 34) || rand <= 13){
+                    if((24 <= rand && rand <= 33) || rand <= 13){
                         NoteUpFragment note = new NoteUpFragment();
-                        Log.d("UP", Integer.toString(rand));
                         note.setArguments(args);
                         fragmentTransaction.add(R.id.fragment_container, note, "NOTE");
-                        if(rand <= 4 || rand == 25 || rand == 26){
+                        if(rand <= 4 || rand == 24 || rand == 25){
                             Bundle first_ledge = new Bundle();
                             LedgerFragment ledge = new LedgerFragment();
                             FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
                             int ledger_height = getResources().getInteger(R.integer.bottom_ledger);
+                            if(rand == 24 || rand == 25){
+                                ledger_height = ledger_height - 715;
+                            }
                             first_ledge.putInt("height", ledger_height);
                             ledge.setArguments(first_ledge);
-                            Log.d("Height in Px", Integer.toString(height));
-                            Log.d("Height", Integer.toString(heightMap.get(key)));
-                            Log.d("Ledger", "Print Ledger Here~~~~~~~~~~~~~~~~~");
-                            Log.d("Ledger Height 1st check", Integer.toString(ledger_height));
-
                             ledgeFrag.add(R.id.fragment_container, ledge, "LEDGE");
-
                             ledgeFrag.commit();
 
                             //adding second ledger line
                             if(rand == 0 || rand == 1){
                                 Bundle ledge_args = new Bundle();
-//                                ledge_args.putInt("height", height + 10);
                                 FragmentTransaction sl = fragmentManager.beginTransaction();
                                 LedgerFragment second_ledge = new LedgerFragment();
                                 ledge_args.putInt("height", ledger_height + 80);
-                                Log.d("2nd Ledger Height", Integer.toString(ledger_height));
-                                //Log.d("second line height", Integer.toString(height - 90));
                                 second_ledge.setArguments(ledge_args);
                                 sl.add(R.id.fragment_container, second_ledge, "LEDGE_TWO");
                                 sl.commit();
@@ -268,22 +306,23 @@ public class MainActivity extends AppCompatActivity
                         if (rand >= 45){
                             FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
                             LedgerFragment ledge = new LedgerFragment();
-                            Log.d("Height", Integer.toString(heightMap.get(key)));
-                            ledge.setArguments(args);
+                            int ledger_height = getResources().getInteger(R.integer.top_ledger);
+                            Bundle h_bundle = new Bundle();
+                            h_bundle.putInt("height", ledger_height);
+                            ledge.setArguments(h_bundle);
                             ledgeFrag.add(R.id.fragment_container, ledge, "LEDGE");
-                            Log.d("Ledger", "Print Ledger Here~~~~~~~~~~~~~~~~~");
                             ledgeFrag.commit();
                             if(rand == 48 || rand == 49){
                                 FragmentTransaction sl = fragmentManager.beginTransaction();
                                 LedgerFragment second_ledge = new LedgerFragment();
-                                args.putInt("height", height - 30);
-                                second_ledge.setArguments(args);
+                                Bundle bun = new Bundle();
+                                bun.putInt("height", ledger_height - 75);
+                                second_ledge.setArguments(bun);
                                 sl.add(R.id.fragment_container, second_ledge, "LEDGE_TWO");
                                 sl.commit();
                             }
                         }
                         NoteDownFragment note = new NoteDownFragment();
-                        Log.d("DOWN", Integer.toString(rand));
                         note.setArguments(args);
                         fragmentTransaction.add(R.id.fragment_container, note, "NOTE");
                     }
@@ -308,10 +347,8 @@ public class MainActivity extends AppCompatActivity
                         }
                         signTransaction.commit();
                     }
-                    Log.d(key, key);
                     mp.reset();
                     filename = mp3FileName(key);
-                    Log.d(filename, filename);
                     AssetFileDescriptor afd = getAssets().openFd(filename);
                     mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
                     mp.prepare();
@@ -319,15 +356,9 @@ public class MainActivity extends AppCompatActivity
                 } catch (IllegalStateException | IOException e) {
                     e.printStackTrace();
                 }
-
                 }
-
-
         });
-//        st = (Button) findViewById(R.id.st);
-//        st.setOnClickListener(new View.OnClickListener() {
-//
-//            public void onClick(View v) {
+
         playback = (Button) findViewById(R.id.pb);
         playback.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -348,6 +379,37 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
+
+        submit = (Button)findViewById(R.id.sub);
+        submit.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view){
+                sEdit = (EditText)findViewById(R.id.editText);
+                Log.d(check_answer, check_answer);
+                Log.d(sEdit.getText().toString(), sEdit.getText().toString());
+                if(check_answer.equals(sEdit.getText().toString())){
+                    playCorrect();
+                }
+            }
+        });
+
+
+
+
+    }
+    public void playCorrect(){
+        final MediaPlayer mp = new MediaPlayer();
+        if(mp.isPlaying()){
+            mp.stop();
+        }
+        try{
+            mp.reset();
+            AssetFileDescriptor afd = getAssets().openFd(getString(R.string.correct));
+            mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException | IOException e) {
+            e.printStackTrace();
+        }
 
     }
 

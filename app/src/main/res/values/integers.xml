@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="bottom_ledger">1454</integer>
+    <integer name="top_ledger">260</integer>
 </resources>
