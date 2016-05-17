@@ -35,6 +35,14 @@
         <activity
             android:name=".games.Games"
             android:label="@string/title_activity_games"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".chords.chords"
+            android:label="@string/title_activity_chords"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".Piano.Piano"
+            android:label="@string/title_activity_piano"
             android:theme="@style/AppTheme"></activity>
     </application>
 

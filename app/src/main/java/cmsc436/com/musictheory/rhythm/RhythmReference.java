@@ -15,8 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
+import cmsc436.com.musictheory.Piano.Piano;
 import cmsc436.com.musictheory.R;
 import cmsc436.com.musictheory.games.Games;
+import cmsc436.com.musictheory.chords.chords;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.scales.Scales;
 
@@ -338,6 +340,17 @@ public class RhythmReference extends AppCompatActivity {
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
+                            case R.id.chords_menu_item:
+                                Intent ci = new Intent(RhythmReference.this, chords.class);
+                                ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ci);
+                                break;
+                            case R.id.piano_menu_item:
+                                Intent pi = new Intent(RhythmReference.this, Piano.class);
+                                pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(pi);
                                 break;
                             default:
                                 break;

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".chords.chords"
+    tools:openDrawer="start">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <TextView
+            android:id="@+id/triads"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="90dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="Triads"
+            />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/LinLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/nav_header_height"
+            android:layout_below="@id/triads"
+            android:columnCount="2"
+            android:rowCount="1"
+            android:orientation="horizontal">
+
+            <Button
+                style="?android:attr/borderlessButtonStyle"
+                android:id="@+id/majorbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/major"
+                android:layout_below="@id/triads"
+                android:layout_gravity="center"
+                android:layout_marginRight="50dp"
+                android:layout_marginLeft="85dp"
+                android:drawableTop="@drawable/gtriad"
+                />
+            <Button
+                android:id="@+id/minorbutton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Minor"
+                android:layout_below="@id/triads"
+                android:drawableTop="@drawable/minor_triad"
+                style="?android:attr/borderlessButtonStyle"
+                />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/Seventh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/LinLayout"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:text="@string/seventh"
+            />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/GridLayouts"
+            android:layout_width="match_parent"
+            android:layout_height= "@dimen/nav_header_height"
+            android:layout_below="@id/Seventh"
+            android:columnCount="3"
+            android:rowCount="1"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/maj7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="40dp"
+                android:text="@string/major"
+                android:layout_gravity="center"
+                android:drawableTop="@drawable/cmaj7"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/min7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="15dp"
+                android:text="Minor"
+                android:drawableTop="@drawable/cmin7"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/dim7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Diminished"
+                android:drawableTop="@drawable/cdim7"
+                style="?android:attr/borderlessButtonStyle"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <!-- Navigation Drawer -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_main_drawer" />
+
+</android.support.v4.widget.DrawerLayout>
