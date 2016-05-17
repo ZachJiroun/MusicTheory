@@ -20,14 +20,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".lessons.LessonsActivity" />
+        <activity android:name=".lessons.LessonsActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".rhythm.RhythmReference"
-            android:label="@string/title_activity_rhythm_reference" />
+            android:label="@string/title_activity_rhythm_reference"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".scales.Scales"
             android:label="@string/title_activity_scales"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".games.ScalesGame"
             android:label="@string/title_activity_scales_game"
@@ -35,11 +38,13 @@
         <activity
             android:name=".games.Games"
             android:label="@string/title_activity_games"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".chords.chords"
             android:label="@string/title_activity_chords"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".Piano.Piano"
             android:label="@string/title_activity_piano"

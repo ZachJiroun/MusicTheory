@@ -58,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(pi);
 
-
     }
 
     @Override
@@ -134,8 +133,4 @@ public class MainActivity extends AppCompatActivity {
                 });
     }
 
-    /*public void openRhythmActivity(View v) {
-
-        Intent intent = new Intent(this, RhythmReference.class);
-    }*/
 }
