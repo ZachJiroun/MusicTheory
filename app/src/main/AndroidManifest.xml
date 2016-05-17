@@ -34,6 +34,7 @@
         <activity
             android:name=".games.ScalesGame"
             android:label="@string/title_activity_scales_game"
+            android:parentActivityName=".games.Games"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".games.Games"
