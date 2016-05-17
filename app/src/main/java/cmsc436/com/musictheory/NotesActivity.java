@@ -340,7 +340,7 @@ public class NotesActivity extends AppCompatActivity
                 check_answer = key.replaceAll("[0-9]","");
                 int height = (int) dpToPixel(heightMap.get(key));
                 args.putInt("height", height);
-
+  
 
                 if(mp.isPlaying()){
                     mp.stop();
