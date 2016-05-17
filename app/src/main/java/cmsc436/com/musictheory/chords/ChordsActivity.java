@@ -16,14 +16,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.Piano.PianoActivity;
 import cmsc436.com.musictheory.R;
-import cmsc436.com.musictheory.games.Games;
+import cmsc436.com.musictheory.games.GamesActivity;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
-import cmsc436.com.musictheory.scales.Scales;
+import cmsc436.com.musictheory.scales.ScalesActivity;
 
-public class chords extends AppCompatActivity {
+public class ChordsActivity extends AppCompatActivity {
 
     Button major;
     Button minor;
@@ -62,7 +62,7 @@ public class chords extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        mDrawerToggle = new ActionBarDrawerToggle(chords.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(ChordsActivity.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -97,7 +97,7 @@ public class chords extends AppCompatActivity {
                 bundle.putString("button_value", "majorTriad");
 
                 FragmentTransaction ft = getFragmentManager().beginTransaction();
-                chordFragment cFragment = new chordFragment();
+                ChordsFragment cFragment = new ChordsFragment();
                 cFragment.setArguments(bundle);
                 ft.add(cFragment, "majorTriad");
                 ft.addToBackStack(null);
@@ -116,7 +116,7 @@ public class chords extends AppCompatActivity {
                                          bundle.putString("button_value", "minorTriad");
 
                                          FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                         chordFragment cFragment = new chordFragment();
+                                         ChordsFragment cFragment = new ChordsFragment();
                                          cFragment.setArguments(bundle);
                                          ft.add(cFragment, "minorTriad");
                                          ft.addToBackStack(null);
@@ -134,7 +134,7 @@ public class chords extends AppCompatActivity {
                                          bundle.putString("button_value", "maj7");
 
                                          FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                         chordFragment cFragment = new chordFragment();
+                                         ChordsFragment cFragment = new ChordsFragment();
                                          cFragment.setArguments(bundle);
                                          ft.add(cFragment, "maj7");
                                          ft.addToBackStack(null);
@@ -152,7 +152,7 @@ public class chords extends AppCompatActivity {
                                           bundle.putString("button_value", "min7");
 
                                           FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                          chordFragment cFragment = new chordFragment();
+                                          ChordsFragment cFragment = new ChordsFragment();
                                           cFragment.setArguments(bundle);
                                           ft.add(cFragment, "min7");
                                           ft.addToBackStack(null);
@@ -170,7 +170,7 @@ public class chords extends AppCompatActivity {
                                           bundle.putString("button_value", "dim7");
 
                                           FragmentTransaction ft = getFragmentManager().beginTransaction();
-                                          chordFragment cFragment = new chordFragment();
+                                          ChordsFragment cFragment = new ChordsFragment();
                                           cFragment.setArguments(bundle);
                                           ft.add(cFragment, "dim7");
                                           ft.addToBackStack(null);
@@ -221,25 +221,25 @@ public class chords extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.lessons_menu_item:
-                                Intent li = new Intent(chords.this, LessonsActivity.class);
+                                Intent li = new Intent(ChordsActivity.this, LessonsActivity.class);
                                 li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(li);
                                 break;
                             case R.id.rhythm_menu_item:
-                                Intent ri = new Intent(chords.this, RhythmReference.class);
+                                Intent ri = new Intent(ChordsActivity.this, RhythmReference.class);
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
                                 break;
                             case R.id.scales_menu_item:
-                                Intent si = new Intent(chords.this, Scales.class);
+                                Intent si = new Intent(ChordsActivity.this, ScalesActivity.class);
                                 si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(si);
                                 break;
                             case R.id.games_menu_item:
-                                Intent gi = new Intent(chords.this, Games.class);
+                                Intent gi = new Intent(ChordsActivity.this, GamesActivity.class);
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
@@ -247,7 +247,7 @@ public class chords extends AppCompatActivity {
                             case R.id.chords_menu_item:
                                 break;
                             case R.id.piano_menu_item:
-                                Intent pi = new Intent(chords.this, Piano.class);
+                                Intent pi = new Intent(ChordsActivity.this, PianoActivity.class);
                                 pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(pi);

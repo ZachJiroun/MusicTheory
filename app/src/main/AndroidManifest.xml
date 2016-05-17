@@ -27,38 +27,38 @@
             android:label="@string/title_activity_rhythm_reference"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".scales.Scales"
+            android:name=".scales.ScalesActivity"
             android:label="@string/title_activity_scales"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".games.ScalesGame"
+            android:name=".games.ScalesGameActivity"
             android:label="@string/title_activity_scales_game"
-            android:parentActivityName=".games.Games"
+            android:parentActivityName=".games.GamesActivity"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".games.Games"
+            android:name=".games.GamesActivity"
             android:label="@string/title_activity_games"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".chords.chords"
+            android:name=".chords.ChordsActivity"
             android:label="@string/title_activity_chords"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity" />
         <activity
-            android:name=".Piano.Piano"
+            android:name=".Piano.PianoActivity"
             android:label="@string/title_activity_piano"
             android:theme="@style/AppTheme" />
         <activity
-            android:name=".ChordsGame"
+            android:name=".games.SharpFragment$ChordsGameActivity"
             android:label="@string/title_activity_chords_game"
             android:theme="@style/AppTheme"
-            android:parentActivityName=".games.Games"/>
-        <activity android:name=".NotesActivity"
+            android:parentActivityName=".games.GamesActivity"/>
+        <activity android:name=".games.ScalesGameActivity$NotesActivity"
             android:label="Notes Game"
             android:theme="@style/AppTheme"
-            android:parentActivityName=".games.Games"/>
+            android:parentActivityName=".games.GamesActivity"/>
     </application>
 
 </manifest>

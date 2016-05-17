@@ -8,7 +8,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:layout_centerInParent="true"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="cmsc436.com.musictheory.chords.chords"
+    tools:context=".chords.ChordsActivity"
     tools:showIn="@layout/activity_chords">
 
 </RelativeLayout>

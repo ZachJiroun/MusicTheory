@@ -21,14 +21,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.Piano.PianoActivity;
 import cmsc436.com.musictheory.R;
-import cmsc436.com.musictheory.chords.chords;
-import cmsc436.com.musictheory.games.Games;
+import cmsc436.com.musictheory.chords.ChordsActivity;
+import cmsc436.com.musictheory.games.GamesActivity;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
 
-public class Scales extends AppCompatActivity {
+public class ScalesActivity extends AppCompatActivity {
 
     Spinner spinner;
     ImageButton playButton;
@@ -64,7 +64,7 @@ public class Scales extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        mDrawerToggle = new ActionBarDrawerToggle(Scales.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(ScalesActivity.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -256,13 +256,13 @@ public class Scales extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.lessons_menu_item:
-                                Intent li = new Intent(Scales.this, LessonsActivity.class);
+                                Intent li = new Intent(ScalesActivity.this, LessonsActivity.class);
                                 li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(li);
                                 break;
                             case R.id.rhythm_menu_item:
-                                Intent ri = new Intent(Scales.this, RhythmReference.class);
+                                Intent ri = new Intent(ScalesActivity.this, RhythmReference.class);
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
@@ -270,19 +270,19 @@ public class Scales extends AppCompatActivity {
                             case R.id.scales_menu_item:
                                 break;
                             case R.id.games_menu_item:
-                                Intent gi = new Intent(Scales.this, Games.class);
+                                Intent gi = new Intent(ScalesActivity.this, GamesActivity.class);
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
                                 break;
                             case R.id.chords_menu_item:
-                                Intent ci = new Intent(Scales.this, chords.class);
+                                Intent ci = new Intent(ScalesActivity.this, ChordsActivity.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ci);
                                 break;
                             case R.id.piano_menu_item:
-                                Intent pi = new Intent(Scales.this, Piano.class);
+                                Intent pi = new Intent(ScalesActivity.this, PianoActivity.class);
                                 pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(pi);

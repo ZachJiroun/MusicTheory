@@ -14,12 +14,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
-import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.Piano.PianoActivity;
 import cmsc436.com.musictheory.R;
-import cmsc436.com.musictheory.games.Games;
-import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.games.GamesActivity;
+import cmsc436.com.musictheory.chords.ChordsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
-import cmsc436.com.musictheory.scales.Scales;
+import cmsc436.com.musictheory.scales.ScalesActivity;
 
 public class LessonsActivity extends AppCompatActivity implements LessonListFragment.OnLessonSelected {
 
@@ -147,25 +147,25 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
                                 startActivity(ri);
                                 break;
                             case R.id.scales_menu_item:
-                                Intent si = new Intent(LessonsActivity.this, Scales.class);
+                                Intent si = new Intent(LessonsActivity.this, ScalesActivity.class);
                                 si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(si);
                                 break;
                             case R.id.games_menu_item:
-                                Intent gi = new Intent(LessonsActivity.this, Games.class);
+                                Intent gi = new Intent(LessonsActivity.this, GamesActivity.class);
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
                                 break;
                             case R.id.chords_menu_item:
-                                Intent ci = new Intent(LessonsActivity.this, chords.class);
+                                Intent ci = new Intent(LessonsActivity.this, ChordsActivity.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ci);
                                 break;
                             case R.id.piano_menu_item:
-                                Intent pi = new Intent(LessonsActivity.this, Piano.class);
+                                Intent pi = new Intent(LessonsActivity.this, PianoActivity.class);
                                 pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(pi);

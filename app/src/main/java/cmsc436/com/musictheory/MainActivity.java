@@ -1,9 +1,6 @@
 package cmsc436.com.musictheory;
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,18 +9,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
-import cmsc436.com.musictheory.games.Games;
-import cmsc436.com.musictheory.games.ScalesGame;
-import cmsc436.com.musictheory.Piano.Piano;
-import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.games.GamesActivity;
+import cmsc436.com.musictheory.Piano.PianoActivity;
+import cmsc436.com.musictheory.chords.ChordsActivity;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
-import cmsc436.com.musictheory.scales.Scales;
+import cmsc436.com.musictheory.scales.ScalesActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        Intent pi = new Intent(MainActivity.this, Piano.class);
+        Intent pi = new Intent(MainActivity.this, PianoActivity.class);
         pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                 | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(pi);
@@ -99,24 +92,24 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(ri);
                                 break;
                             case R.id.scales_menu_item:
-                                Intent si = new Intent(MainActivity.this, Scales.class);
+                                Intent si = new Intent(MainActivity.this, ScalesActivity.class);
                                 si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(si);
                                 break;
                             case R.id.games_menu_item:
-                                Intent gi = new Intent(MainActivity.this, Games.class);
+                                Intent gi = new Intent(MainActivity.this, GamesActivity.class);
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
                             case R.id.chords_menu_item:
-                                Intent ci = new Intent(MainActivity.this, chords.class);
+                                Intent ci = new Intent(MainActivity.this, ChordsActivity.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ci);
                                 break;
                             case R.id.piano_menu_item:
-                                Intent pi = new Intent(MainActivity.this, Piano.class);
+                                Intent pi = new Intent(MainActivity.this, PianoActivity.class);
                                 pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(pi);

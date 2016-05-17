@@ -4,9 +4,7 @@ import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,16 +17,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import cmsc436.com.musictheory.ChordsGame;
-import cmsc436.com.musictheory.NotesActivity;
-import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.Piano.PianoActivity;
 import cmsc436.com.musictheory.R;
-import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.chords.ChordsActivity;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
-import cmsc436.com.musictheory.scales.Scales;
+import cmsc436.com.musictheory.scales.ScalesActivity;
 
-public class Games extends AppCompatActivity {
+public class GamesActivity extends AppCompatActivity {
 
     SharedPreferences gameSettings;
     SharedPreferences.Editor prefEditor;
@@ -74,7 +70,7 @@ public class Games extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        mDrawerToggle = new ActionBarDrawerToggle(Games.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(GamesActivity.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -120,7 +116,7 @@ public class Games extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Games.this, ScalesGame.class);
+                Intent intent = new Intent(GamesActivity.this, ScalesGameActivity.class);
                 startActivity(intent);
             }
         });
@@ -131,7 +127,7 @@ public class Games extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Games.this, NotesActivity.class);
+                Intent intent = new Intent(GamesActivity.this, ScalesGameActivity.NotesActivity.class);
                 startActivity(intent);
             }
         });
@@ -142,7 +138,7 @@ public class Games extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(Games.this, ChordsGame.class);
+                Intent intent = new Intent(GamesActivity.this, SharpFragment.ChordsGameActivity.class);
                 startActivity(intent);
             }
         });
@@ -208,19 +204,19 @@ public class Games extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.lessons_menu_item:
-                                Intent li = new Intent(Games.this, LessonsActivity.class);
+                                Intent li = new Intent(GamesActivity.this, LessonsActivity.class);
                                 li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(li);
                                 break;
                             case R.id.rhythm_menu_item:
-                                Intent ri = new Intent(Games.this, RhythmReference.class);
+                                Intent ri = new Intent(GamesActivity.this, RhythmReference.class);
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
                                 break;
                             case R.id.scales_menu_item:
-                                Intent si = new Intent(Games.this, Scales.class);
+                                Intent si = new Intent(GamesActivity.this, ScalesActivity.class);
                                 si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(si);
@@ -228,13 +224,13 @@ public class Games extends AppCompatActivity {
                             case R.id.games_menu_item:
                                 break;
                             case R.id.chords_menu_item:
-                                Intent ci = new Intent(Games.this, chords.class);
+                                Intent ci = new Intent(GamesActivity.this, ChordsActivity.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ci);
                                 break;
                             case R.id.piano_menu_item:
-                                Intent pi = new Intent(Games.this, Piano.class);
+                                Intent pi = new Intent(GamesActivity.this, PianoActivity.class);
                                 pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(pi);

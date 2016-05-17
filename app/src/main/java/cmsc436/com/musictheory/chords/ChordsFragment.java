@@ -17,12 +17,12 @@ import cmsc436.com.musictheory.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link chordFragment.OnFragmentInteractionListener} interface
+ * {@link ChordsFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link chordFragment#newInstance} factory method to
+ * Use the {@link ChordsFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class chordFragment extends DialogFragment {
+public class ChordsFragment extends DialogFragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
@@ -39,7 +39,7 @@ public class chordFragment extends DialogFragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public chordFragment() {
+    public ChordsFragment() {
         // Required empty public constructor
     }
 
@@ -52,8 +52,8 @@ public class chordFragment extends DialogFragment {
      * @return A new instance of fragment chordFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static chordFragment newInstance(String param1, String param2) {
-        chordFragment fragment = new chordFragment();
+    public static ChordsFragment newInstance(String param1, String param2) {
+        ChordsFragment fragment = new ChordsFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

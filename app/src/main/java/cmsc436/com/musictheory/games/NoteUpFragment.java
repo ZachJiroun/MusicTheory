@@ -1,17 +1,23 @@
-package cmsc436.com.musictheory;
+package cmsc436.com.musictheory.games;
+
 
 import android.os.Bundle;
+import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.util.Log;
 import android.widget.RelativeLayout;
 
-/**
- * Created by Vit on 5/14/2016.
- */
-public class SharpFragment extends android.support.v4.app.Fragment {
+import cmsc436.com.musictheory.R;
 
-    public SharpFragment() {
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class NoteUpFragment extends android.support.v4.app.Fragment {
+
+    public NoteUpFragment() {
         // Required empty public constructor
     }
 
@@ -20,8 +26,8 @@ public class SharpFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
 
         Bundle bundle = this.getArguments();
-        View view = inflater.inflate(R.layout.sharp_fragment, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(300, bundle.getInt("height") + 70);
+        View view = inflater.inflate(R.layout.note_up_fragment, container, false);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(700, bundle.getInt("height"));
         view.setLayoutParams(layoutParams);
 
         return view;

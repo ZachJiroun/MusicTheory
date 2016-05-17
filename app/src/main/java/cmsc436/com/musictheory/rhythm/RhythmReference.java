@@ -16,12 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 
-import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.Piano.PianoActivity;
 import cmsc436.com.musictheory.R;
-import cmsc436.com.musictheory.games.Games;
-import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.games.GamesActivity;
+import cmsc436.com.musictheory.chords.ChordsActivity;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
-import cmsc436.com.musictheory.scales.Scales;
+import cmsc436.com.musictheory.scales.ScalesActivity;
 
 public class RhythmReference extends AppCompatActivity {
 
@@ -332,25 +332,25 @@ public class RhythmReference extends AppCompatActivity {
                             case R.id.rhythm_menu_item:
                                 break;
                             case R.id.scales_menu_item:
-                                Intent si = new Intent(RhythmReference.this, Scales.class);
+                                Intent si = new Intent(RhythmReference.this, ScalesActivity.class);
                                 si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(si);
                                 break;
                             case R.id.games_menu_item:
-                                Intent gi = new Intent(RhythmReference.this, Games.class);
+                                Intent gi = new Intent(RhythmReference.this, GamesActivity.class);
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
                                 break;
                             case R.id.chords_menu_item:
-                                Intent ci = new Intent(RhythmReference.this, chords.class);
+                                Intent ci = new Intent(RhythmReference.this, ChordsActivity.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ci);
                                 break;
                             case R.id.piano_menu_item:
-                                Intent pi = new Intent(RhythmReference.this, Piano.class);
+                                Intent pi = new Intent(RhythmReference.this, PianoActivity.class);
                                 pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(pi);

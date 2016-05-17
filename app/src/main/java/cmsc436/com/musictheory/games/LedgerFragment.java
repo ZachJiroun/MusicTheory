@@ -1,4 +1,4 @@
-package cmsc436.com.musictheory;
+package cmsc436.com.musictheory.games;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import cmsc436.com.musictheory.R;
 
 /**
  * Created by Vit on 5/15/2016.
