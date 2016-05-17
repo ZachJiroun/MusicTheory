@@ -21,7 +21,7 @@ public class LedgerFragment extends android.support.v4.app.Fragment {
 
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.ledger_fragment, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(432, bundle.getInt("height"));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(480, bundle.getInt("height") + 75);
         //RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(432, getResources().getInteger(R.integer.bottom_ledger));
         view.setLayoutParams(layoutParams);
 

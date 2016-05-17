@@ -53,10 +53,12 @@
         <activity
             android:name=".ChordsGame"
             android:label="@string/title_activity_chords_game"
-            android:theme="@style/AppTheme" />
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".games.Games"/>
         <activity android:name=".NotesActivity"
-            android:label="NotesGameActivity"
-            android:theme="@style/AppTheme" />
+            android:label="Notes Game"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".games.Games"/>
     </application>
 
 </manifest>

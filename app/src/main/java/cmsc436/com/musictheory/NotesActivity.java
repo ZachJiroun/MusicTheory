@@ -1,12 +1,15 @@
 package cmsc436.com.musictheory;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
@@ -20,9 +23,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Notation;
+
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
+
+import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.lessons.LessonsActivity;
+import cmsc436.com.musictheory.rhythm.RhythmReference;
+import cmsc436.com.musictheory.scales.Scales;
 
 public class NotesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +46,17 @@ public class NotesActivity extends AppCompatActivity
     String filename = "";
     String check_answer = "";
     EditText sEdit;
-    Button test;
+    SharedPreferences gameSettings;
+    SharedPreferences.Editor prefEditor;
+    int currentScore;
+    TextView currentScoreText;
+    TextView highScoreText;
+
+
+    private DrawerLayout mDrawerLayout;
+    private Toolbar mToolbar;
+    private ActionBarDrawerToggle mDrawerToggle;
+    android.app.FragmentManager mFragmentManager;
 
     public String mp3FileName (String string) {
         String answer = string.substring(0, 2);
@@ -213,18 +237,68 @@ public class NotesActivity extends AppCompatActivity
         final MediaPlayer mp = new MediaPlayer();
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        // Set up the navigation drawer.
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // Set up the toolbar.
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setDisplayShowTitleEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
 
+        mDrawerToggle = new ActionBarDrawerToggle(NotesActivity.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFragmentManager.popBackStack();
+            }
+        });
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
+        // Set up fragment
+        mFragmentManager = getFragmentManager();
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+
+        gameSettings = getSharedPreferences("MyGamePreferences", MODE_PRIVATE);
+        prefEditor = gameSettings.edit();
+
+        currentScore = 0;
+
+        currentScoreText = (TextView) findViewById(R.id.scales_current_score);
+        highScoreText = (TextView) findViewById(R.id.scales_high_score);
+
+        currentScoreText.setText("Current Score: " + 0);
+
+        int highScore = gameSettings.getInt("notes_score", 0);
+
+        highScoreText.setText("High Score: " + highScore);
 
 
         st = (Button) findViewById(R.id.st);
+
         st.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View v) {
@@ -277,13 +351,14 @@ public class NotesActivity extends AppCompatActivity
                         NoteUpFragment note = new NoteUpFragment();
                         note.setArguments(args);
                         fragmentTransaction.add(R.id.fragment_container, note, "NOTE");
+
                         if(rand <= 4 || rand == 24 || rand == 25){
                             Bundle first_ledge = new Bundle();
                             LedgerFragment ledge = new LedgerFragment();
                             FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
                             int ledger_height = getResources().getInteger(R.integer.bottom_ledger);
                             if(rand == 24 || rand == 25){
-                                ledger_height = ledger_height - 715;
+                                ledger_height = ledger_height - 950;
                             }
                             first_ledge.putInt("height", ledger_height);
                             ledge.setArguments(first_ledge);
@@ -384,23 +459,30 @@ public class NotesActivity extends AppCompatActivity
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 sEdit = (EditText) findViewById(R.id.editText);
+                int currentHigh = gameSettings.getInt("notes_score", 0);
+
                 Log.d(check_answer, check_answer);
                 Log.d(sEdit.getText().toString(), sEdit.getText().toString());
                 if (check_answer.equals(sEdit.getText().toString())) {
                     playCorrect();
+
+                    Toast.makeText(getBaseContext(), "You're Right!", Toast.LENGTH_SHORT).show();
+                    currentScore++;
+                    currentScoreText.setText("Current Score: " + currentScore);
+
+                    if (currentScore > currentHigh) {
+                        highScoreText.setText("High Score: " + currentScore);
+
+                        prefEditor.putInt("notes_score", currentScore);
+                        prefEditor.commit();
+                    }
+                }else{
+                    currentScore = 0;
+                    currentScoreText.setText("Current Score: " + 0);
+                    Toast.makeText(getBaseContext(), "You're Wrong!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
-
-        test = (Button)findViewById(R.id.test);
-        test.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                Intent i = new Intent(NotesActivity.this, ChordsGame.class);
-                startActivity(i);
-            }
-        });
-
-
 
     }
     public void playCorrect(){
@@ -422,34 +504,86 @@ public class NotesActivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawers();
+            return;
+        }
+        if(mFragmentManager.getBackStackEntryCount() != 0) {
+            mFragmentManager.popBackStack();
         } else {
-            super.onBackPressed();
+            Intent intent = NavUtils.getParentActivityIntent(this);
+            startActivity(intent);
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
+   @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mFragmentManager.getBackStackEntryCount() > 0) {
+                    mFragmentManager.popBackStack();
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
+    }
 
-        return super.onOptionsItemSelected(item);
+    public void setDrawerIndicatorEnabled(boolean value) {
+        if (mDrawerToggle != null) {
+            mDrawerToggle.setDrawerIndicatorEnabled(value);
+        }
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.lessons_menu_item:
+                                Intent li = new Intent(NotesActivity.this, LessonsActivity.class);
+                                li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(li);
+                                break;
+                            case R.id.rhythm_menu_item:
+                                Intent ri = new Intent(NotesActivity.this, RhythmReference.class);
+                                ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ri);
+                                break;
+                            case R.id.scales_menu_item:
+                                Intent si = new Intent(NotesActivity.this, Scales.class);
+                                si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(si);
+                                break;
+                            case R.id.games_menu_item:
+                                break;
+                            case R.id.chords_menu_item:
+                                Intent ci = new Intent(NotesActivity.this, chords.class);
+                                ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ci);
+                                break;
+                            case R.id.piano_menu_item:
+                                Intent pi = new Intent(NotesActivity.this, Piano.class);
+                                pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(pi);
+                                break;
+                            default:
+                                break;
+                        }
+                        // Close the navigation drawer when an item is selected.
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+
+                });
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

@@ -1,6 +1,8 @@
 package cmsc436.com.musictheory;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
@@ -9,8 +11,10 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NavUtils;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,10 +24,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
+
+import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.games.Games;
+import cmsc436.com.musictheory.lessons.LessonsActivity;
+import cmsc436.com.musictheory.rhythm.RhythmReference;
+import cmsc436.com.musictheory.scales.Scales;
 
 /**
  * Created by Vit on 5/16/2016.
@@ -31,7 +45,9 @@ import java.util.Random;
 public class ChordsGame extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    Button pl;
+    Button pl, submit;
+    EditText sEdit;
+    String check_answer;
     HashMap<Integer, String> major_map = new HashMap();
     HashMap<Integer, String> minor_map = new HashMap();
     HashMap<String, String>maj_chord_map = new HashMap();
@@ -40,6 +56,17 @@ public class ChordsGame extends AppCompatActivity
     String note_name_1 = "";
     String note_name_2 = "";
     String note_name_3 = "";
+    SharedPreferences gameSettings;
+    SharedPreferences.Editor prefEditor;
+    int currentScore;
+    TextView currentScoreText;
+    TextView highScoreText;
+
+    private DrawerLayout mDrawerLayout;
+    private Toolbar mToolbar;
+    private ActionBarDrawerToggle mDrawerToggle;
+    android.app.FragmentManager mFragmentManager;
+
 
     public void generateHeight(){
         Resources res = getResources();
@@ -99,7 +126,65 @@ public class ChordsGame extends AppCompatActivity
         final MediaPlayer mp3 = new MediaPlayer();
 
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        // Set up the navigation drawer.
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // Set up the toolbar.
+        mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(mToolbar);
+
+        ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setDisplayShowTitleEnabled(true);
+            ab.setDisplayHomeAsUpEnabled(true);
+        }
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        if (navigationView != null) {
+            setupDrawerContent(navigationView);
+        }
+
+        mDrawerToggle = new ActionBarDrawerToggle(ChordsGame.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+            }
+
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+            }
+        };
+
+        mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mFragmentManager.popBackStack();
+            }
+        });
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
+
+        // Set up fragment
+        mFragmentManager = getFragmentManager();
+
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+
+        gameSettings = getSharedPreferences("MyGamePreferences", MODE_PRIVATE);
+        prefEditor = gameSettings.edit();
+
+        currentScore = 0;
+
+        currentScoreText = (TextView) findViewById(R.id.scales_current_score);
+        highScoreText = (TextView) findViewById(R.id.scales_high_score);
+
+        currentScoreText.setText("Current Score: " + 0);
+
+        int highScore = gameSettings.getInt("chords_score", 0);
+
+        highScoreText.setText("High Score: " + highScore);
+
         String maj[] = getResources().getStringArray(R.array.maj_scale);
         generateMap(maj, major_map, maj_chord_map, R.array.major_scale);
         String min[] = getResources().getStringArray(R.array.min_scale);
@@ -166,8 +251,10 @@ public class ChordsGame extends AppCompatActivity
                 if (scale_type == 0) {
 
                     rand = generateInterval(0, 14);
+
                     // rand = 1;
                     String note_name_key = major_map.get(rand);
+                    check_answer = note_name_key.replaceAll("[0-9]","");
                     Log.d("random number", Integer.toString(rand));
                     String chord[] = maj_chord_map.get(note_name_key).split(" ");
 
@@ -272,6 +359,7 @@ public class ChordsGame extends AppCompatActivity
                     Log.d("random number", Integer.toString(rand));
 
                     String note_name_key = minor_map.get(rand);
+                    check_answer = note_name_key.replaceAll("[0-9]","");
                     String chord[] = min_chord_map.get(note_name_key).split(" ");
                     Log.d("chord name1", chord[0]);
                     Log.d("chord name1", chord[1]);
@@ -435,26 +523,140 @@ public class ChordsGame extends AppCompatActivity
 //                } catch (IllegalStateException | IOException e) {
 //                    e.printStackTrace();
 //                }
+                submit = (Button)findViewById(R.id.sub);
+                submit.setOnClickListener(new View.OnClickListener() {
+                    public void onClick(View view) {
+                        sEdit = (EditText) findViewById(R.id.editText);
+                        int currentHigh = gameSettings.getInt("chords_score", 0);
+
+                        Log.d(check_answer, check_answer);
+                        Log.d(sEdit.getText().toString(), sEdit.getText().toString());
+                        if (check_answer.equals(sEdit.getText().toString())) {
+                            playCorrect();
+                            Toast.makeText(getBaseContext(), "You're Right!", Toast.LENGTH_SHORT).show();
+                            currentScore++;
+                            currentScoreText.setText("Current Score: " + currentScore);
+
+                            if (currentScore > currentHigh) {
+                                highScoreText.setText("High Score: " + currentScore);
+
+                                prefEditor.putInt("chords_score", currentScore);
+                                prefEditor.commit();
+                            }
+                        }else{
+                            currentScore = 0;
+                            currentScoreText.setText("Current Score: " + 0);
+                            Toast.makeText(getBaseContext(), "You're Wrong!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
 
         });
     }
 
+    public void playCorrect(){
+        final MediaPlayer mp = new MediaPlayer();
+        if(mp.isPlaying()){
+            mp.stop();
+        }
+        try{
+            mp.reset();
+            AssetFileDescriptor afd = getAssets().openFd(getString(R.string.correct));
+            mp.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException | IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawers();
+            return;
+        }
+        if(mFragmentManager.getBackStackEntryCount() != 0) {
+            mFragmentManager.popBackStack();
         } else {
-            super.onBackPressed();
+            Intent intent = NavUtils.getParentActivityIntent(this);
+            startActivity(intent);
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                if (mFragmentManager.getBackStackEntryCount() > 0) {
+                    mFragmentManager.popBackStack();
+                    getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+                }
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    public void setDrawerIndicatorEnabled(boolean value) {
+        if (mDrawerToggle != null) {
+            mDrawerToggle.setDrawerIndicatorEnabled(value);
+        }
+    }
+
+    private void setupDrawerContent(NavigationView navigationView) {
+        navigationView.setNavigationItemSelectedListener(
+                new NavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(MenuItem menuItem) {
+                        switch (menuItem.getItemId()) {
+                            case R.id.lessons_menu_item:
+                                Intent li = new Intent(ChordsGame.this, LessonsActivity.class);
+                                li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(li);
+                                break;
+                            case R.id.rhythm_menu_item:
+                                Intent ri = new Intent(ChordsGame.this, RhythmReference.class);
+                                ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ri);
+                                break;
+                            case R.id.scales_menu_item:
+                                Intent si = new Intent(ChordsGame.this, Scales.class);
+                                si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(si);
+                                break;
+                            case R.id.games_menu_item:
+                                Intent gi = new Intent(ChordsGame.this, Games.class);
+                                gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(gi);
+                            case R.id.chords_menu_item:
+                                Intent ci = new Intent(ChordsGame.this, chords.class);
+                                ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ci);
+                                break;
+                            case R.id.piano_menu_item:
+                                Intent pi = new Intent(ChordsGame.this, Piano.class);
+                                pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(pi);
+                                break;
+                            default:
+                                break;
+                        }
+                        // Close the navigation drawer when an item is selected.
+                        menuItem.setChecked(true);
+                        mDrawerLayout.closeDrawers();
+                        return true;
+                    }
+
+                });
     }
 
 

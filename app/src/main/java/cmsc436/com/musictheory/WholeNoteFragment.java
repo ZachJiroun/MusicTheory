@@ -21,7 +21,7 @@ public class WholeNoteFragment  extends android.support.v4.app.Fragment {
 
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.whole_note_fragment, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(450, bundle.getInt("height"));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(550, bundle.getInt("height"));
         view.setLayoutParams(layoutParams);
 
         return view;

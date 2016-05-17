@@ -28,7 +28,7 @@
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
         </android.support.design.widget.AppBarLayout>
 
-
+        <include layout="@layout/content_notes" />
 
     </LinearLayout>
 

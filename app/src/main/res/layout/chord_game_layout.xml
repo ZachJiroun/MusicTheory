@@ -9,10 +9,86 @@
     tools:context=".games.Games"
     tools:openDrawer="start">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/treble_staff"
+            android:layout_marginTop="85dp"
+            android:id="@+id/imageView3"
+            android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Play"
+            android:id="@+id/play"
+            android:layout_below="@+id/imageView3"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enter chord name with capital base note."
+            android:id="@+id/textView2"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="115dp"
+            android:textColor="#4f218b" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="72dp"
+            android:id="@+id/editText"
+            android:textColor="#4f218b"
+            android:hint="Chord Name"
+            android:clickable="true"
+            android:layout_alignEnd="@+id/noteTitle"
+            android:layout_toEndOf="@+id/st"
+            android:focusable="true"
+            android:focusableInTouchMode="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Submit"
+            android:id="@+id/sub"
+            android:layout_alignBottom="@+id/editText"
+            android:layout_toRightOf="@+id/editText"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scales_current_score"
+            android:layout_below="@+id/sub"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/scales_high_score"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/sub"
+            android:layout_marginTop="15dp"/>
+
+        <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="600dp"
+        android:id="@+id/fragment_container"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+
+    </RelativeLayout>
 
         <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
@@ -28,32 +104,8 @@
 
         </android.support.design.widget.AppBarLayout>
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/treble_staff"
-        android:layout_marginTop="85dp"
-        android:id="@+id/imageView3"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-    <RelativeLayout
-        android:layout_width="150dp"
-        android:layout_height="600dp"
-        android:id="@+id/fragment_container"
-        android:layout_gravity="center"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true">
+
     </RelativeLayout>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play"
-        android:id="@+id/play"
-        android:layout_below="@+id/imageView3"
-        android:layout_centerHorizontal="true" />
-
-    </LinearLayout>
 
     <!-- Navigation Drawer -->
     <android.support.design.widget.NavigationView
@@ -64,6 +116,6 @@
         android:fitsSystemWindows="true"
         app:menu="@menu/activity_main_drawer" />
 
-    <include layout="@layout/content_notes" />
+
 
 </android.support.v4.widget.DrawerLayout>
