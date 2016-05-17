@@ -49,7 +49,14 @@
         <activity
             android:name=".Piano.Piano"
             android:label="@string/title_activity_piano"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".ChordsGame"
+            android:label="@string/title_activity_chords_game"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".NotesActivity"
+            android:label="NotesGameActivity"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

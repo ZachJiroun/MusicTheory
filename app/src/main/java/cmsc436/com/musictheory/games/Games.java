@@ -19,6 +19,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import cmsc436.com.musictheory.ChordsGame;
+import cmsc436.com.musictheory.NotesActivity;
 import cmsc436.com.musictheory.Piano.Piano;
 import cmsc436.com.musictheory.R;
 import cmsc436.com.musictheory.chords.chords;
@@ -34,6 +36,8 @@ public class Games extends AppCompatActivity {
     TextView chordsText;
     TextView notesText;
     Button scalesGameButton;
+    Button notesGameButton;
+    Button chordsGameButton;
     Button resetButton;
     int scalesHigh;
     int chordsHigh;
@@ -120,6 +124,29 @@ public class Games extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        notesGameButton = (Button) findViewById(R.id.notes_game_button);
+
+        notesGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Games.this, NotesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        chordsGameButton = (Button) findViewById(R.id.chords_game_button);
+
+        chordsGameButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(Games.this, ChordsGame.class);
+                startActivity(intent);
+            }
+        });
+
 
         resetButton = (Button) findViewById(R.id.reset_scores_button);
 
