@@ -3,23 +3,29 @@
 
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/piano_menu_item"
+            android:title="@string/piano_title"
+            android:icon="@drawable/ic_piano_black_48px"/>
+        <item
             android:id="@+id/lessons_menu_item"
-            android:title="Lessons" />
+            android:title="@string/lessons_title"
+            android:icon="@drawable/ic_lessons"/>
         <item
             android:id="@+id/rhythm_menu_item"
-            android:title="Rhythm" />
+            android:title="@string/rhythm_title"
+            android:icon="@drawable/ic_drum" />
         <item
             android:id="@+id/scales_menu_item"
-            android:title="Scales" />
+            android:title="@string/scales_title"
+            android:icon="@drawable/ic_queue_music_black_24dp" />
         <item
             android:id="@+id/chords_menu_item"
-            android:title="Chords" />
+            android:title="@string/chords_title"
+            android:icon="@drawable/ic_chord"/>
         <item
             android:id="@+id/games_menu_item"
-            android:title="Games" />
-        <item
-            android:id="@+id/piano_menu_item"
-            android:title="Piano" />
+            android:title="@string/games_title"
+            android:icon="@drawable/ic_games" />
     </group>
 
 </menu>
