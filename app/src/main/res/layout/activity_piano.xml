@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".chords.chords"
+    tools:openDrawer="start">
+
+    <android.support.design.widget.CoordinatorLayout
+        android:id="@+id/coordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/AppTheme.AppBarOverlay"
+            >
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            >
+
+            <Button
+                android:id="@+id/b"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/a"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/b"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/g"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/a"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/f"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/g"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/e"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/f"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/d"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/e"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/c"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/d"
+                android:background="@drawable/border"
+                style="?android:attr/borderlessButtonStyle"
+                />
+
+            <Button
+                android:id="@+id/b2"
+                android:layout_width="match_parent"
+                android:layout_height="76dp"
+                android:layout_below="@+id/c"
+                android:background="@drawable/border"
+                android:text="Touch to Play!"
+                style="?android:attr/borderlessButtonStyle"
+                />
+            <Button
+                android:id="@+id/bflat"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:layout_marginTop="50dp"/>
+            <Button
+                android:id="@+id/aflat"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:layout_below="@+id/bflat"
+                android:layout_marginTop="28dp"/>
+            <Button
+                android:id="@+id/fsharp"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:layout_below="@+id/aflat"
+                android:layout_marginTop="25dp"/>
+            <Button
+                android:id="@+id/eflat"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:layout_below="@+id/fsharp"
+                android:layout_marginTop="100dp"/>
+            <Button
+                android:id="@+id/csharp"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:background="#000000"
+                android:layout_below="@+id/eflat"
+                android:layout_marginTop="25dp"/>
+
+
+        </RelativeLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
+
+    <include layout="@layout/content_piano" />
+
+    <!-- Navigation Drawer -->
+    <android.support.design.widget.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:menu="@menu/activity_main_drawer" />
+
+</android.support.v4.widget.DrawerLayout>

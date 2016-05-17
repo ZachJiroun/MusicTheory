@@ -18,8 +18,8 @@
             android:id="@+id/games_menu_item"
             android:title="Games" />
         <item
-            android:id="@+id/metronome_menu_item"
-            android:title="Metronome" />
+            android:id="@+id/piano_menu_item"
+            android:title="Piano" />
     </group>
 
 </menu>

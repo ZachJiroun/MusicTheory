@@ -13,7 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
+import cmsc436.com.musictheory.Piano.Piano;
 import cmsc436.com.musictheory.R;
+import cmsc436.com.musictheory.chords.chords;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
 
 public class LessonsActivity extends AppCompatActivity implements LessonListFragment.OnLessonSelected {
@@ -139,6 +141,19 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
+                                break;
+                            case R.id.chords_menu_item:
+                                Intent ci = new Intent(LessonsActivity.this, chords.class);
+                                ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ci);
+                                break;
+                            case R.id.piano_menu_item:
+                                Intent pi = new Intent(LessonsActivity.this, Piano.class);
+                                pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(pi);
+                                break;
                             default:
                                 break;
                         }

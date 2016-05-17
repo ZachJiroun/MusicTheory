@@ -3,6 +3,7 @@ package cmsc436.com.musictheory;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -11,9 +12,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import cmsc436.com.musictheory.Piano.Piano;
+import cmsc436.com.musictheory.chords.chords;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
 
@@ -44,6 +49,12 @@ public class MainActivity extends AppCompatActivity {
         if (navigationView != null) {
             setupDrawerContent(navigationView);
         }
+
+        Intent pi = new Intent(MainActivity.this, Piano.class);
+        pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(pi);
+
 
     }
 
@@ -84,6 +95,19 @@ public class MainActivity extends AppCompatActivity {
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
+                                break;
+                            case R.id.chords_menu_item:
+                                Intent ci = new Intent(MainActivity.this, chords.class);
+                                ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ci);
+                                break;
+                            case R.id.piano_menu_item:
+                                Intent pi = new Intent(MainActivity.this, Piano.class);
+                                pi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(pi);
+                                break;
                             default:
                                 break;
                         }

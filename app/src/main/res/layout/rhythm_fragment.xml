@@ -20,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/play_stop_button"
+        android:layout_below="@id/measure_image"
         android:layout_gravity="center_horizontal|bottom"
         android:src="@drawable/ic_play_button"/>
 
