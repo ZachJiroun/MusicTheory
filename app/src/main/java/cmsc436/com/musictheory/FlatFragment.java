@@ -22,7 +22,7 @@ public class FlatFragment extends android.support.v4.app.Fragment {
 
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.flat_fragment, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(350, bundle.getInt("height") + 90);
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(300, bundle.getInt("height") + 70);
         view.setLayoutParams(layoutParams);
 
         return view;

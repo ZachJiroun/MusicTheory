@@ -34,9 +34,7 @@
             android:layout_height="125dp"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:elevation="8dp"
-            android:translationZ="8dp" />
+            android:layout_marginRight="15dp" />
 
     <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"

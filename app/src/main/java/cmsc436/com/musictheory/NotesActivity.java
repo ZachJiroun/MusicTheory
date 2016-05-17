@@ -1,5 +1,6 @@
 package cmsc436.com.musictheory;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetFileDescriptor;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -303,7 +305,6 @@ public class NotesActivity extends AppCompatActivity
 
             public void onClick(View v) {
 
-                //int rand = 48;
                 int rand = generateInterval();
 
                 HashMap<Integer, String> map = generateMap();
@@ -340,7 +341,7 @@ public class NotesActivity extends AppCompatActivity
                 check_answer = key.replaceAll("[0-9]","");
                 int height = (int) dpToPixel(heightMap.get(key));
                 args.putInt("height", height);
-  
+
 
                 if(mp.isPlaying()){
                     mp.stop();
@@ -358,7 +359,7 @@ public class NotesActivity extends AppCompatActivity
                             FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
                             int ledger_height = getResources().getInteger(R.integer.bottom_ledger);
                             if(rand == 24 || rand == 25){
-                                ledger_height = ledger_height - 950;
+                                ledger_height = ledger_height- 630;
                             }
                             first_ledge.putInt("height", ledger_height);
                             ledge.setArguments(first_ledge);
@@ -370,7 +371,7 @@ public class NotesActivity extends AppCompatActivity
                                 Bundle ledge_args = new Bundle();
                                 FragmentTransaction sl = fragmentManager.beginTransaction();
                                 LedgerFragment second_ledge = new LedgerFragment();
-                                ledge_args.putInt("height", ledger_height + 80);
+                                ledge_args.putInt("height", ledger_height + 65);
                                 second_ledge.setArguments(ledge_args);
                                 sl.add(R.id.fragment_container, second_ledge, "LEDGE_TWO");
                                 sl.commit();
@@ -391,7 +392,7 @@ public class NotesActivity extends AppCompatActivity
                                 FragmentTransaction sl = fragmentManager.beginTransaction();
                                 LedgerFragment second_ledge = new LedgerFragment();
                                 Bundle bun = new Bundle();
-                                bun.putInt("height", ledger_height - 75);
+                                bun.putInt("height", ledger_height - 63);
                                 second_ledge.setArguments(bun);
                                 sl.add(R.id.fragment_container, second_ledge, "LEDGE_TWO");
                                 sl.commit();

@@ -25,7 +25,7 @@ public class NoteUpFragment extends android.support.v4.app.Fragment {
 
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.note_up_fragment, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(480, bundle.getInt("height"));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(700, bundle.getInt("height"));
         view.setLayoutParams(layoutParams);
 
         return view;

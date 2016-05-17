@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="125dp"
     tools:context=".rhythm.RhythmFragment"
-    android:background="#efefef">
+    android:background="#f9f8f8">
 
     <!-- TODO: Update blank fragment layout -->
 

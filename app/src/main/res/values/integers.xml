@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="bottom_ledger">1865</integer>
-    <integer name="top_ledger">260</integer>
-    <integer name="bot_chord_ledger">2200</integer>
+    <integer name="bottom_ledger">1200</integer>
+    <integer name="top_ledger">140</integer>
+    <integer name="bot_chord_ledger">2000</integer>
 </resources>

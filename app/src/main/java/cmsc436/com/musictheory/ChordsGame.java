@@ -246,7 +246,7 @@ public class ChordsGame extends AppCompatActivity
                     frag_3.remove(prev3).commit();
                 }
 
-                int scale_type = generateInterval(0, 1);
+                int scale_type = generateInterval(0, 2);
 //                int scale_type = 1;
                 if (scale_type == 0) {
 
@@ -343,7 +343,7 @@ public class ChordsGame extends AppCompatActivity
                         Bundle first_ledge = new Bundle();
                         ChordLedger ledge = new ChordLedger();
                         FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
-                        int ledger_height = getResources().getInteger(R.integer.bot_chord_ledger);
+                        int ledger_height = getResources().getInteger(R.integer.bot_chord_ledger) - 550;
                         first_ledge.putInt("height", ledger_height);
                         ledge.setArguments(first_ledge);
                         ledgeFrag.add(R.id.fragment_container, ledge, "LEDGE");
@@ -360,6 +360,7 @@ public class ChordsGame extends AppCompatActivity
 
                     String note_name_key = minor_map.get(rand);
                     check_answer = note_name_key.replaceAll("[0-9]","");
+                    check_answer= check_answer.concat("m");
                     String chord[] = min_chord_map.get(note_name_key).split(" ");
                     Log.d("chord name1", chord[0]);
                     Log.d("chord name1", chord[1]);
@@ -454,7 +455,7 @@ public class ChordsGame extends AppCompatActivity
                         Bundle first_ledge = new Bundle();
                         ChordLedger ledge = new ChordLedger();
                         FragmentTransaction ledgeFrag = fragmentManager.beginTransaction();
-                        int ledger_height = getResources().getInteger(R.integer.bot_chord_ledger);
+                        int ledger_height = getResources().getInteger(R.integer.bot_chord_ledger) - 550;
                         first_ledge.putInt("height", ledger_height);
                         ledge.setArguments(first_ledge);
                         ledgeFrag.add(R.id.fragment_container, ledge, "LEDGE");

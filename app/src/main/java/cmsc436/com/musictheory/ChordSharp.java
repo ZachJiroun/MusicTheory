@@ -21,7 +21,7 @@ public class ChordSharp extends android.support.v4.app.Fragment {
 
         Bundle bundle = this.getArguments();
         View view = inflater.inflate(R.layout.chord_sharp, container, false);
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(350, bundle.getInt("height"));
+        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(250, bundle.getInt("height"));
         view.setLayoutParams(layoutParams);
 
         return view;
