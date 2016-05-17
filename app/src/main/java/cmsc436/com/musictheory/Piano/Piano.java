@@ -19,8 +19,10 @@ import android.widget.Button;
 
 import cmsc436.com.musictheory.R;
 import cmsc436.com.musictheory.chords.chords;
+import cmsc436.com.musictheory.games.Games;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
+import cmsc436.com.musictheory.scales.Scales;
 
 public class Piano extends AppCompatActivity {
 
@@ -360,17 +362,31 @@ public class Piano extends AppCompatActivity {
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(li);
                                 break;
+                            case R.id.rhythm_menu_item:
+                                Intent ri = new Intent(Piano.this, RhythmReference.class);
+                                ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(ri);
+                                break;
+                            case R.id.scales_menu_item:
+                                Intent si = new Intent(Piano.this, Scales.class);
+                                si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(si);
+                                break;
+                            case R.id.games_menu_item:
+                                Intent gi = new Intent(Piano.this, Games.class);
+                                gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(gi);
+                                break;
                             case R.id.chords_menu_item:
                                 Intent ci = new Intent(Piano.this, chords.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ci);
                                 break;
-                            case R.id.rhythm_menu_item:
-                                Intent ri = new Intent(Piano.this, RhythmReference.class);
-                                ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                startActivity(ri);
+                            case R.id.piano_menu_item:
                                 break;
                             default:
                                 break;

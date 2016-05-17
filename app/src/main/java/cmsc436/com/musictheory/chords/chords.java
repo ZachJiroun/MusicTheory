@@ -18,8 +18,10 @@ import android.widget.Button;
 
 import cmsc436.com.musictheory.Piano.Piano;
 import cmsc436.com.musictheory.R;
+import cmsc436.com.musictheory.games.Games;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
+import cmsc436.com.musictheory.scales.Scales;
 
 public class chords extends AppCompatActivity {
 
@@ -229,6 +231,20 @@ public class chords extends AppCompatActivity {
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
+                                break;
+                            case R.id.scales_menu_item:
+                                Intent si = new Intent(chords.this, Scales.class);
+                                si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(si);
+                                break;
+                            case R.id.games_menu_item:
+                                Intent gi = new Intent(chords.this, Games.class);
+                                gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(gi);
+                                break;
+                            case R.id.chords_menu_item:
                                 break;
                             case R.id.piano_menu_item:
                                 Intent pi = new Intent(chords.this, Piano.class);

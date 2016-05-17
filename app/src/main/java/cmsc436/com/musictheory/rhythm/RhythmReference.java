@@ -342,6 +342,7 @@ public class RhythmReference extends AppCompatActivity {
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
+                                break;
                             case R.id.chords_menu_item:
                                 Intent ci = new Intent(RhythmReference.this, chords.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK

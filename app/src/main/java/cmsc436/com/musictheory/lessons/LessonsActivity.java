@@ -157,6 +157,7 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
                                 gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(gi);
+                                break;
                             case R.id.chords_menu_item:
                                 Intent ci = new Intent(LessonsActivity.this, chords.class);
                                 ci.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
