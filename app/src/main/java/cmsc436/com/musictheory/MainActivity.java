@@ -15,7 +15,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import cmsc436.com.musictheory.lessons.LessonsActivity;
-import cmsc436.com.musictheory.rhythm.RhythmReference;
+import cmsc436.com.musictheory.rhythm.RhythmActivity;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -80,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                 startActivity(li);
                                 break;
                             case R.id.rhythm_menu_item:
-                                Intent ri = new Intent(MainActivity.this, RhythmReference.class);
+                                Intent ri = new Intent(MainActivity.this, RhythmActivity.class);
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);

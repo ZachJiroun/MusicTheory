@@ -7,6 +7,10 @@
     <string name="action_settings">Settings</string>
 
     <string name="lessons_title">Lessons</string>
+    <string name="rhythm_title">Rhythm</string>
+    <string name="scales_title">Scales</string>
+    <string name='chords_title'>Chords</string>
+    <string name="games_title">Games</string>
 
     <string name="title_activity_rhythm_reference">RhythmReference</string>
 

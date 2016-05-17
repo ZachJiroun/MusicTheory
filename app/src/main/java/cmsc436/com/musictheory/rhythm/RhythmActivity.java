@@ -18,7 +18,7 @@ import android.widget.ImageButton;
 import cmsc436.com.musictheory.R;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
 
-public class RhythmReference extends AppCompatActivity {
+public class RhythmActivity extends AppCompatActivity {
 
     ImageButton wholeNoteButton;
     ImageButton wholeRestButton;
@@ -62,7 +62,7 @@ public class RhythmReference extends AppCompatActivity {
             setupDrawerContent(navigationView);
         }
 
-        mDrawerToggle = new ActionBarDrawerToggle(RhythmReference.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        mDrawerToggle = new ActionBarDrawerToggle(RhythmActivity.this, mDrawerLayout, mToolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -319,7 +319,7 @@ public class RhythmReference extends AppCompatActivity {
                     public boolean onNavigationItemSelected(MenuItem menuItem) {
                         switch (menuItem.getItemId()) {
                             case R.id.lessons_menu_item:
-                                Intent li = new Intent(RhythmReference.this, LessonsActivity.class);
+                                Intent li = new Intent(RhythmActivity.this, LessonsActivity.class);
                                 li.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(li);
