@@ -11,6 +11,14 @@
         android:id="@+id/imageView3"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
+    <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="600dp"
+        android:id="@+id/fragment_container"
+        android:layout_gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true">
+    </RelativeLayout>
 
     <Button
         android:layout_width="wrap_content"

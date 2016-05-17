@@ -2,4 +2,5 @@
 <resources>
     <integer name="bottom_ledger">1454</integer>
     <integer name="top_ledger">260</integer>
+    <integer name="bot_chord_ledger">1655</integer>
 </resources>

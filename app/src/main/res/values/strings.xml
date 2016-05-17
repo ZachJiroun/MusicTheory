@@ -9,17 +9,106 @@
     <string name="button_name">Start</string>
     <string name="playback">Playback</string>
     <string-array name="note_array">
+        <item>B4b</item>
+        <item>B4</item>
+        <item>C4b</item>
+        <item>C5</item>
+        <item>C5#</item>
+        <item>D5b</item>
+        <item>D5</item>
+        <item>D5#</item>
+        <item>E5b</item>
+        <item>E5</item>
+        <item>E5#</item>
+        <item>F5</item>
+        <item>F5#</item>
+        <item>G5b</item>
+        <item>G5</item>
+        <item>G5#</item>
+        <item>A5b</item>
+        <item>A5</item>
+        <item>A5#</item>
+        <item>B5b</item>
+        <item>B5</item>
+        <item>C6b</item>
+        <item>C6</item>
+        <item>C6#</item>
+        <item>D6b</item>
+        <item>D6</item>
+        <item>D6#</item>
+        <item>E6b</item>
+        <item>E6</item>
+        <item>E6#</item>
+    </string-array>
+
+    <string-array name="maj_scale">
+        <item>Bb</item>
+        <item>B</item>
+        <item>C</item>
+        <item>C#</item>
+        <item>Db</item>
+        <item>D</item>
+        <item>Eb</item>
+        <item>E</item>
+        <item>F</item>
+        <item>F#</item>
+        <item>Gb</item>
+        <item>G</item>
+        <item>Ab</item>
         <item>A</item>
+    </string-array>
+
+    <string-array name="min_scale">
         <item>Bb</item>
         <item>B</item>
         <item>C</item>
         <item>C#</item>
         <item>D</item>
-        <item>D#</item>
+        <item>Eb</item>
         <item>E</item>
         <item>F</item>
         <item>F#</item>
         <item>G</item>
         <item>G#</item>
+        <item>Ab</item>
+        <item>A</item>
     </string-array>
+
+
+
+    <string-array name="major_scale" >
+        <item>B4b D5 F5</item>
+        <item>B4 D5# F5#</item>
+        <item>C5 E5 G5</item>
+        <item>C5# E5# G5#</item>
+        <item>D5b F5 A5b</item>
+        <item>D5 F5# A5</item>
+        <item>E5b G5 B5b</item>
+        <item>E5 G5# B5</item>
+        <item>F5 A5 C6</item>
+        <item>F5# A5# C6#</item>
+        <item>G5b B5b D6b</item>
+        <item>G5 B5 D6</item>
+        <item>A5b C6 E6b</item>
+        <item>A5 C6# E6</item>
+    </string-array>
+
+    <string-array name="minor_scale">
+        <item>B4b D5b F5</item>
+        <item>B4 D5 F5#</item>
+        <item>C5 E5b G5</item>
+        <item>C5# E5 G5#</item>
+        <item>D5 F5 A5</item>
+        <item>E5b G5b B5b</item>
+        <item>E5 G5 B5</item>
+        <item>F5 A5b C6</item>
+        <item>F5# A5 C6#</item>
+        <item>G5 B5b D6</item>
+        <item>G5# B5 D6#</item>
+        <item>A5b C6b E6b</item>
+        <item>A5 C6 E6</item>
+
+
+    </string-array>
+    <string name="title_activity_chords_game">ChordsGameActivity</string>
 </resources>

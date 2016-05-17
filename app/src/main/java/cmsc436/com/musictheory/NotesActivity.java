@@ -1,5 +1,6 @@
 package cmsc436.com.musictheory;
 
+import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity
+public class NotesActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     HashMap<String, Integer> heightMap = new HashMap<>();
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     String filename = "";
     String check_answer = "";
     EditText sEdit;
+    Button test;
 
 
 
@@ -193,7 +195,7 @@ public class MainActivity extends AppCompatActivity
 
     public int generateInterval(){
         int min = 0;
-        int max = 49;
+        int max = 50;
         Random seed = new Random();
         return seed.nextInt(max - min) + min;
     }
@@ -207,7 +209,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.notes_activity);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         final MediaPlayer mp = new MediaPlayer();
@@ -382,16 +384,23 @@ public class MainActivity extends AppCompatActivity
 
         submit = (Button)findViewById(R.id.sub);
         submit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view){
-                sEdit = (EditText)findViewById(R.id.editText);
+            public void onClick(View view) {
+                sEdit = (EditText) findViewById(R.id.editText);
                 Log.d(check_answer, check_answer);
                 Log.d(sEdit.getText().toString(), sEdit.getText().toString());
-                if(check_answer.equals(sEdit.getText().toString())){
+                if (check_answer.equals(sEdit.getText().toString())) {
                     playCorrect();
                 }
             }
         });
 
+        test = (Button)findViewById(R.id.test);
+        test.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent i = new Intent(NotesActivity.this, ChordsGame.class);
+                startActivity(i);
+            }
+        });
 
 
 
