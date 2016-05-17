@@ -12,9 +12,4 @@
     tools:context="cmsc436.com.musictheory.MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <Button
-        android:id="@+id/rhythm_link_button"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:onClick="openRhythmActivity"/>
 </RelativeLayout>

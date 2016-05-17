@@ -60,8 +60,6 @@ public class RhythmFragment extends Fragment {
                 String button_value = bundle.getString("button_value");
                 MediaPlayer mp;
 
-
-
                 if(button_value.equals("whole")) {
                     mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.whole_note);
                 }else if (button_value.equals("half")){
@@ -75,14 +73,14 @@ public class RhythmFragment extends Fragment {
                 }else {
                     mp = MediaPlayer.create(getActivity().getBaseContext(), R.raw.blank_120);
                 }
+
+                mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
+
                 mp.start();
-
-                while(mp.isPlaying())
-                {
-                    //Do nothing
-                }
-
-                mp.release();
             }
         });
 

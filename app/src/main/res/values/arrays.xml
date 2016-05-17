@@ -31,4 +31,20 @@
         <item>http://www.musictheory.net/lessons/24</item>
         <item>http://www.musictheory.net/lessons/25</item>
     </string-array>
+
+    <string-array name="scales_array">
+        <item>Bb Major</item>
+        <item>Bb Minor</item>
+        <item>C Major</item>
+        <item>C Minor</item>
+        <item>D Major</item>
+        <item>D Minor</item>
+        <item>F Major</item>
+        <item>F Minor</item>
+        <item>G Major</item>
+        <item>G Minor</item>
+        <item>A Major</item>
+        <item>A Minor</item>
+    </string-array>
+
 </resources>

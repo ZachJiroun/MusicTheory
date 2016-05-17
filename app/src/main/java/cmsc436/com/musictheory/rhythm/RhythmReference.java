@@ -16,7 +16,9 @@ import android.view.View;
 import android.widget.ImageButton;
 
 import cmsc436.com.musictheory.R;
+import cmsc436.com.musictheory.games.Games;
 import cmsc436.com.musictheory.lessons.LessonsActivity;
+import cmsc436.com.musictheory.scales.Scales;
 
 public class RhythmReference extends AppCompatActivity {
 
@@ -93,7 +95,6 @@ public class RhythmReference extends AppCompatActivity {
         RhythmFragment rhythmFragment = new RhythmFragment();
         rhythmFragment.setArguments(bundle);
         fragmentTransaction.add(R.id.rhythm_fragment_container, rhythmFragment);
-        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         wholeNoteButton = (ImageButton) findViewById(R.id.whole_note_button);
@@ -324,9 +325,24 @@ public class RhythmReference extends AppCompatActivity {
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(li);
                                 break;
+                            case R.id.rhythm_menu_item:
+                                break;
+                            case R.id.scales_menu_item:
+                                Intent si = new Intent(RhythmReference.this, Scales.class);
+                                si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(si);
+                                break;
+                            case R.id.games_menu_item:
+                                Intent gi = new Intent(RhythmReference.this, Games.class);
+                                gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(gi);
+                                break;
                             default:
                                 break;
                         }
+
                         // Close the navigation drawer when an item is selected.
                         menuItem.setChecked(true);
                         mDrawerLayout.closeDrawers();

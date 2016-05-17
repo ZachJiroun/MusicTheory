@@ -40,6 +40,7 @@ public class LessonListFragment extends Fragment {
         if (context instanceof OnLessonSelected) {
             mListener = (OnLessonSelected) context;
             mActivity = (AppCompatActivity) context;
+
         } else {
             throw new ClassCastException(context.toString() + " must implement OnLessonSelected.");
         }

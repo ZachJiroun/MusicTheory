@@ -8,7 +8,7 @@
 
     <string name="lessons_title">Lessons</string>
 
-    <string name="title_activity_rhythm_reference">RhythmReference</string>
+    <string name="title_activity_rhythm_reference">Rhythm</string>
 
     <string name="rhythm_header">Rhythm</string>
     <string name="notes_header">Notes</string>
@@ -21,4 +21,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_scales">Scales</string>
+    <string name="title_activity_scales_game">Scales Game</string>
+    <string name="title_activity_games">Games</string>
 </resources>

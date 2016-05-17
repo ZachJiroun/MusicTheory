@@ -14,7 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import cmsc436.com.musictheory.R;
+import cmsc436.com.musictheory.games.Games;
 import cmsc436.com.musictheory.rhythm.RhythmReference;
+import cmsc436.com.musictheory.scales.Scales;
 
 public class LessonsActivity extends AppCompatActivity implements LessonListFragment.OnLessonSelected {
 
@@ -139,6 +141,19 @@ public class LessonsActivity extends AppCompatActivity implements LessonListFrag
                                 ri.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
                                         | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(ri);
+                                break;
+                            case R.id.scales_menu_item:
+                                Intent si = new Intent(LessonsActivity.this, Scales.class);
+                                si.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(si);
+                                break;
+                            case R.id.games_menu_item:
+                                Intent gi = new Intent(LessonsActivity.this, Games.class);
+                                gi.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK
+                                        | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(gi);
+                                break;
                             default:
                                 break;
                         }

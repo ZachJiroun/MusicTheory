@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="120dp"
+    android:layout_height="125dp"
     tools:context=".rhythm.RhythmFragment"
-    android:background="#c6e2df">
+    android:background="#efefef">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -13,14 +13,18 @@
         android:id="@+id/measure_image"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_marginTop="0dp"
+        android:elevation="5dp"
+        android:translationZ="5dp"
         android:src="@drawable/blank_measure"/>
 
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/play_stop_button"
+        android:elevation="4dp"
+        android:translationZ="4dp"
         android:layout_gravity="center_horizontal|bottom"
+        android:layout_below="@+id/measure_image"
         android:src="@drawable/ic_play_button"/>
 
 </FrameLayout>

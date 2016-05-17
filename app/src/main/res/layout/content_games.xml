@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="cmsc436.com.musictheory.games.Games"
+    tools:showIn="@layout/activity_games">
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:id="@+id/scales_game_icon"
+        android:src="@drawable/scales_image"
+        android:layout_below="@+id/reset_scores_button"
+        android:layout_marginTop="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scales_game_button"
+        android:text="Scales Game"
+        android:layout_below="@+id/scales_game_icon"
+        android:layout_marginLeft="20dp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scales_game_high_score"
+        android:layout_below="@+id/scales_game_button"
+        android:layout_marginLeft="37dp"/>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:id="@+id/notes_game_icon"
+        android:src="@drawable/notes_image"
+        android:layout_below="@+id/scales_game_icon"
+        android:layout_marginLeft="98dp"
+        android:layout_marginTop="80dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notes_game_button"
+        android:text="Notes Game"
+        android:layout_below="@+id/notes_game_icon"
+        android:layout_marginLeft="106dp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/notes_game_high_score"
+        android:layout_below="@+id/notes_game_button"
+        android:layout_marginLeft="125dp"/>
+
+    <ImageView
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:id="@+id/chords_game_icon"
+        android:src="@drawable/chords_image"
+        android:layout_below="@+id/reset_scores_button"
+        android:layout_marginTop="55dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chords_game_button"
+        android:text="Chords Game"
+        android:layout_below="@+id/chords_game_icon"
+        android:layout_marginLeft="188dp"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chords_game_high_score"
+        android:layout_below="@+id/chords_game_button"
+        android:layout_marginLeft="205dp"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/reset_scores_button"
+        android:text="Reset High Scores"
+        />
+
+
+</RelativeLayout>
